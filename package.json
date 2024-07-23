@@ -1,0 +1,63 @@
+{
+	"name": "open-file-from-line",
+	"displayName": "Open File from Line",
+	"description": "Opens a file from the file path in the current line.",
+	"version": "0.0.1",
+	"icon": "icon.png",
+	"author": {
+		"name": "chaftta",
+		"email": "chaftta@gmail.com",
+		"url": "https://github.com/chaftta"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chaftta/OpenFileFromLine.git"
+	},
+	"engines": {
+		"vscode": "^1.91.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.openFileFromPath"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.openFileFromPath",
+				"title": "Open File from Line"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.openFileFromPath",
+				"key": "ctrl+alt+o",
+				"mac": "cmd+alt+o",
+				"when": "editorTextFocus"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run package",
+		"compile": "npm run check-types && npm run lint && node esbuild.js",
+		"watch": "npm-run-all -p watch:*",
+		"watch:esbuild": "node esbuild.js --watch",
+		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+		"package": "npm run check-types && npm run lint && node esbuild.js --production",
+		"check-types": "tsc --noEmit",
+		"lint": "eslint src --ext ts"
+	},
+	"devDependencies": {
+		"@types/node": "20.x",
+		"@types/vscode": "^1.91.0",
+		"@typescript-eslint/eslint-plugin": "^7.14.1",
+		"@typescript-eslint/parser": "^7.11.0",
+		"esbuild": "^0.21.5",
+		"eslint": "^8.57.0",
+		"glob": "^8.0.3",
+		"npm-run-all": "^4.1.5",
+		"typescript": "^5.4.5"
+	}
+}
